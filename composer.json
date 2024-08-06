@@ -1,19 +1,34 @@
 {
-    "name": "tmanley1985/hl7-php",
-    "description": "A php package to construct hl7 messages",
-    "type": "library",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Tmanley1985\\Hl7Php\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Thomas Manley",
-            "email": "tmanley1985@gmail.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require": {}
+  "name": "tmanley1985/hl7-php",
+  "description": "A php package to construct hl7 messages",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Tmanley1985\\Hl7Php\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tmanley1985\\Hl7Php\\Tests": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Thomas Manley",
+      "email": "tmanley1985@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": "^8.2"
+  },
+  "require-dev": {
+    "pestphp/pest": "*"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
 }
