@@ -10,7 +10,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Tmanley1985\\Hl7Php\\Tests": "tests/"
+      "Tmanley1985\\Hl7Php\\Tests\\": "tests/"
     }
   },
   "authors": [
@@ -24,7 +24,8 @@
     "php": "^8.2"
   },
   "require-dev": {
-    "pestphp/pest": "*"
+    "pestphp/pest": "*",
+    "laravel/pint": "*"
   },
   "config": {
     "allow-plugins": {
