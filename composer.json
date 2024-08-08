@@ -5,12 +5,12 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Tmanley1985\\Hl7Php\\": "src/"
+      "TManley1985\\HL7Php\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Tmanley1985\\Hl7Php\\Tests\\": "tests/"
+      "TManley1985\\HL7Php\\Tests\\": "tests/"
     }
   },
   "authors": [
