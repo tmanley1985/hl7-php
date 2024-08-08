@@ -8,16 +8,15 @@ final class HL7Stubs
 {
     public static function getADT_A01(): string
     {
-        $message = <<<'EOT'
-        MSH|^~\&|SENDING_APPLICATION|SENDING_FACILITY|RECEIVING_APPLICATION|RECEIVING_FACILITY|20230815083000||ADT^A01|MSG00001|P|2.5.1
-        EVN|A01|20230815083000
-        PID|1||10006579^^^1^MRN^1||DUCK^DONALD^D||19241010|M||1|111 DUCK ST^^FOWL^CA^999990000^^M|1|8005551212|8005551212|1|2||40007716^^^1^AN^1||610074^^^1^DD^1|Y|1|||||||||||N
-        NK1|1|DUCK^DAISY^D|SO|3583 DUCK RD^^FOWL^CA^999990000|8005552222||Y||||||||||||||
-        PV1|1|I|PREOP^101^1^1^^^S|3|||37^DISNEY^WALT^^^^^^1|||01||||1|||37^DISNEY^WALT^^^^^^1|2|40007716^^^1^AN^1|4|||||||||||||||||||1||G|||20230815082500||||||
-        EOT;
-        
+        $message = 'MSH|^~\&|SENDING_APPLICATION|SENDING_FACILITY|RECEIVING_APPLICATION|RECEIVING_FACILITY|20230815083000||ADT^A01|MSG00001|P|2.5.1' . '\r';
+        $message = $message .= 'EVN|A01|20230815083000' . '\r';
+        $message = $message .= 'PID|1||10006579^^^1^MRN^1||DUCK^DONALD^D||19241010|M||1|111 DUCK ST^^FOWL^CA^999990000^^M|1|8005551212|8005551212|1|2||40007716^^^1^AN^1||610074^^^1^DD^1|Y|1|||||||||||N' . '\r';
+        $message = $message .= 'NK1|1|DUCK^DAISY^D|SO|3583 DUCK RD^^FOWL^CA^999990000|8005552222||Y||||||||||||||' . '\r';
+        $message = $message .= 'PV1|1|I|PREOP^101^1^1^^^S|3|||37^DISNEY^WALT^^^^^^1|||01||||1|||37^DISNEY^WALT^^^^^^1|2|40007716^^^1^AN^1|4|||||||||||||||||||1||G|||20230815082500||||||' . '\r';
+
         // Replace newlines with carriage returns to conform to HL7 standards
-        return str_replace("\n", "\r", $message);
+        // return str_replace("\n", "\r", $message);
+        return $message;
     }
 
     public static function getORU_R01(): string

@@ -9,6 +9,8 @@ use TManley1985\HL7Php\Tests\Stubs\HL7Stubs;
 test('example', function () {
 
     $expected = HL7Stubs::getADT_A01();
+
+    /* @var HL7v2Message */
     $message = HL7v2Message::builder()
         ->addSegment('MSH', function (HL7Segment $segment) {
             $segment
@@ -20,7 +22,9 @@ test('example', function () {
                 ->addField("20230815083000")
                 ->addEmptyFields(1)
                 ->addField("ADT^A01")
-                ->addField("MSG00001");
+                ->addField("MSG00001")
+                ->addField("P")
+                ->addField("2.5.1");
         })
         ->addSegment("EVN", function (HL7Segment $segment) {
             $segment
@@ -90,9 +94,10 @@ test('example', function () {
                 ->addField("20230815082500")
                 ->addEmptyFields(5);
         })
-        ->build()
-        ->toString();
+        ->build();
 
+    $message = $message->toString();
     $actual = HL7Stubs::getADT_A01();
+
     expect($message)->toBe($actual);
 });

@@ -24,6 +24,11 @@ final class HL7v2Message implements HL7MessageInterface
         return HL7v2Builder::create();
     }
 
+    public function getSegments(): array
+    {
+        return $this->segments;
+    }
+
     public function toString(): string
     {
         // TODO: Ensure we don't need to do any escaping.
@@ -31,7 +36,15 @@ final class HL7v2Message implements HL7MessageInterface
         // Each segment needs their fields to be joined with pipe characters
         // and then joined with \r characters as per the spec.
 
-        return implode("\r", array_map(fn($segment) => $segment->toString(), $this->segments));
+        // TODO: Need to figure out the carriage return thing.
+        $segments = array_map(fn ($segment) => $segment->toString(), $this->segments);
+
+        $message = "";
+
+        foreach ($segments as $segment) {
+            $message .= $segment . '\r';
+        }
+        return $message;
     }
 
 }
