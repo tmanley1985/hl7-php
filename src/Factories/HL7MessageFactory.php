@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace TManley1985\HL7Php\Factories;
 
 use TManley1985\HL7Php\Contracts\HL7MessageInterface;
+use TManley1985\HL7Php\Contracts\HL7BuilderInterface;
+use TManley1985\HL7Php\Messages\HL7v2Message;
 
 enum HL7Version: string
 {
@@ -17,7 +19,7 @@ enum HL7Version: string
 
 final class HL7MessageFactory
 {
-    public static function createBuilder(HL7Version $version): HL7MessageInterface
+    public static function createBuilder(HL7Version $version): HL7BuilderInterface
     {
         return match($version) {
             HL7Version::V2_3,
