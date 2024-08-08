@@ -3,13 +3,14 @@
 namespace TManley1985\HL7Php\Tests\Unit;
 
 use TManley1985\HL7Php\Messages\HL7v2Message;
+use TManley1985\HL7Php\Segments\HL7Segment;
 use TManley1985\HL7Php\Tests\Stubs\HL7Stubs;
 
 test('example', function () {
 
     $expected = HL7Stubs::getADT_A01();
     $message = HL7v2Message::builder()
-        ->addSegment('MSH', function ($segment) {
+        ->addSegment('MSH', function (HL7Segment $segment) {
             $segment
                 ->addField("^~\&")
                 ->addField("SENDING_APPLICATION")
@@ -21,12 +22,12 @@ test('example', function () {
                 ->addField("ADT^A01")
                 ->addField("MSG00001");
         })
-        ->addSegment("EVN", function ($segment) {
+        ->addSegment("EVN", function (HL7Segment $segment) {
             $segment
                 ->addField("A01")
                 ->addField("20230815083000");
         })
-        ->addSegment("PID", function ($segment) {
+        ->addSegment("PID", function (HL7Segment $segment) {
             $segment
                 ->addField("1")
                 ->addEmptyFields(1)
@@ -53,7 +54,7 @@ test('example', function () {
                 ->addEmptyFields(10)
                 ->addField("N");
         })
-        ->addSegment("NK1", function ($segment) {
+        ->addSegment("NK1", function (HL7Segment $segment) {
             $segment
                 ->addField("1")
                 ->addField("DUCK^DAISY^D")
@@ -64,7 +65,7 @@ test('example', function () {
                 ->addField("Y")
                 ->addEmptyFields(13);
         })
-        ->addSegment("PV1", function ($segment) {
+        ->addSegment("PV1", function (HL7Segment $segment) {
             $segment
                 ->addField("1")
                 ->addField("I")
@@ -89,7 +90,9 @@ test('example', function () {
                 ->addField("20230815082500")
                 ->addEmptyFields(5);
         })
-        ->build();
+        ->build()
+        ->toString();
 
-    expect($message->toString())->toBe(HL7Stubs::getADT_A01());
+    $actual = HL7Stubs::getADT_A01();
+    expect($message)->toBe($actual);
 });

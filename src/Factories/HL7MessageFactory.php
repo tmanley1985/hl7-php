@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace TManley1985\HL7Php\Factories;
 
-use TManley1985\HL7Php\Contracts\HL7MessageInterface;
 use TManley1985\HL7Php\Contracts\HL7BuilderInterface;
 use TManley1985\HL7Php\Messages\HL7v2Message;
 
