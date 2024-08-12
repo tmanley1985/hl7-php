@@ -7,6 +7,8 @@ namespace TManley1985\HL7Php\Messages;
 use TManley1985\HL7Php\Builders\HL7v2Builder;
 use TManley1985\HL7Php\Contracts\HL7MessageInterface;
 use TManley1985\HL7Php\Contracts\HL7BuilderInterface;
+use TManley1985\HL7Php\Contracts\HL7ParserInterface;
+use TManley1985\HL7Php\Parsers\HL7v2Parser;
 
 final class HL7v2Message implements HL7MessageInterface
 {
@@ -24,6 +26,11 @@ final class HL7v2Message implements HL7MessageInterface
         return HL7v2Builder::create();
     }
 
+    public static function parser(): HL7ParserInterface
+    {
+        return HL7v2Parser::create();
+    }
+
     public function getSegments(): array
     {
         return $this->segments;
@@ -31,12 +38,8 @@ final class HL7v2Message implements HL7MessageInterface
 
     public function toString(): string
     {
-        // TODO: Ensure we don't need to do any escaping.
-
         // Each segment needs their fields to be joined with pipe characters
         // and then joined with \r characters as per the spec.
-
-        // TODO: Need to figure out the carriage return thing.
         $segments = array_map(fn ($segment) => $segment->toString(), $this->segments);
 
         $message = "";

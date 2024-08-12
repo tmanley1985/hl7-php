@@ -97,7 +97,5 @@ test('it should build a proper v2 message', function () {
     $message = $message->toString();
     $actual = HL7Stubs::getADT_A01();
 
-    var_dump($message);
-    var_dump($actual);
     expect($message)->toBe($actual);
 });
