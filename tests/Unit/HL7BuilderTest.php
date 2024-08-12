@@ -6,10 +6,7 @@ use TManley1985\HL7Php\Messages\HL7v2Message;
 use TManley1985\HL7Php\Segments\HL7Segment;
 use TManley1985\HL7Php\Tests\Stubs\HL7Stubs;
 
-test('example', function () {
-
-    // TODO: Check that the `\` needs to be escaped.
-    $expected = HL7Stubs::getADT_A01();
+test('it should build a proper v2 message', function () {
 
     /* @var HL7v2Message */
     $message = HL7v2Message::builder()
@@ -100,7 +97,5 @@ test('example', function () {
     $message = $message->toString();
     $actual = HL7Stubs::getADT_A01();
 
-    var_dump($message);
-    var_dump($actual);
     expect($message)->toBe($actual);
 });
