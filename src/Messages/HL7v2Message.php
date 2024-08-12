@@ -42,7 +42,7 @@ final class HL7v2Message implements HL7MessageInterface
         $message = "";
 
         foreach ($segments as $segment) {
-            $message .= $segment . '\r';
+            $message .= $segment . "\r";
         }
         return $message;
     }

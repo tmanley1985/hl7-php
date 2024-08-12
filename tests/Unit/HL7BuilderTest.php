@@ -8,13 +8,14 @@ use TManley1985\HL7Php\Tests\Stubs\HL7Stubs;
 
 test('example', function () {
 
+    // TODO: Check that the `\` needs to be escaped.
     $expected = HL7Stubs::getADT_A01();
 
     /* @var HL7v2Message */
     $message = HL7v2Message::builder()
         ->addSegment('MSH', function (HL7Segment $segment) {
             $segment
-                ->addField("^~\&")
+                ->addField("^~\\&")
                 ->addField("SENDING_APPLICATION")
                 ->addField("SENDING_FACILITY")
                 ->addField("RECEIVING_APPLICATION")
@@ -99,5 +100,7 @@ test('example', function () {
     $message = $message->toString();
     $actual = HL7Stubs::getADT_A01();
 
+    var_dump($message);
+    var_dump($actual);
     expect($message)->toBe($actual);
 });
